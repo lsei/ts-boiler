@@ -24,7 +24,7 @@ module.exports = [
         },
         devServer: {
             contentBase: path.join(__dirname, 'static'),
-            port: 4200,
+            port: 4444,
             publicPath: '/assets/js',
         },
         output: {

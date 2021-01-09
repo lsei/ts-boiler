@@ -8,6 +8,8 @@ A basic project scaffolding for typescript projects
 npm run dev
 ```
 
+Visit local site on http://localhost:4444
+
 ## Features
 
 -   Compiles TypeScript
@@ -17,4 +19,4 @@ npm run dev
 ## Todos
 
 -   [ ] Production bundle output
--   ...?
+-   [ ] ...?
