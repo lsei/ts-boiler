@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = [
     {
         mode: 'development',
-        entry: './src/index.ts',
+        entry: ['./src/ts/index.ts', './src/scss/index.scss'],
         target: 'web',
         devtool: 'inline-source-map',
         resolve: {
@@ -20,16 +20,27 @@ module.exports = [
                     test: /\.(glsl|vert|frag)$/,
                     use: 'raw-loader',
                 },
+                {
+                    test: /\.scss$/,
+                    exclude: /node_modules/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: { outputPath: 'css/', name: '[name].css' },
+                        },
+                        'sass-loader',
+                    ],
+                },
             ],
         },
         devServer: {
             contentBase: path.join(__dirname, 'static'),
             port: 4444,
-            publicPath: '/assets/js',
+            publicPath: '/assets',
         },
         output: {
             path: __dirname + '/build',
-            filename: 'bundle.js',
+            filename: 'js/bundle.js',
         },
     },
 ];
