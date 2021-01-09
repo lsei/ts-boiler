@@ -4,8 +4,8 @@ module.exports = [
     {
         mode: 'development',
         entry: './src/index.ts',
-        target: 'es5',
-        devtool: 'eval',
+        target: 'web',
+        devtool: 'inline-source-map',
         resolve: {
             extensions: ['.js', '.ts'],
         },
@@ -24,8 +24,8 @@ module.exports = [
         },
         devServer: {
             contentBase: path.join(__dirname, 'static'),
-            port: 4000,
-            // publicPath: '/build',
+            port: 4200,
+            publicPath: '/assets/js',
         },
         output: {
             path: __dirname + '/build',
