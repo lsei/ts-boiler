@@ -1,3 +1,4 @@
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = [
@@ -26,7 +27,10 @@ module.exports = [
                     use: [
                         {
                             loader: 'file-loader',
-                            options: { outputPath: 'css/', name: '[name].css' },
+                            options: {
+                                outputPath: 'assets/css/',
+                                name: '[name].css',
+                            },
                         },
                         'sass-loader',
                     ],
@@ -34,13 +38,19 @@ module.exports = [
             ],
         },
         devServer: {
-            contentBase: path.join(__dirname, 'static'),
+            static: {
+                directory: path.join(__dirname, 'static'),
+            },
             port: 4444,
-            publicPath: '/assets',
         },
         output: {
-            path: __dirname + '/build',
-            filename: 'js/bundle.js',
+            path: path.join(__dirname, 'build'),
+            filename: 'assets/js/bundle.js',
         },
+        plugins: [
+            new CopyPlugin({
+                patterns: [{ from: 'static', to: '' }],
+            }),
+        ],
     },
 ];
