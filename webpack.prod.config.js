@@ -7,10 +7,9 @@ const path = require('path');
 
 module.exports = [
     {
-        mode: 'development',
+        mode: 'production',
         entry: ['./src/ts/index.ts', './src/scss/index.scss'],
         target: 'web',
-        devtool: 'inline-source-map',
         resolve: {
             extensions: ['.js', '.ts'],
         },
@@ -46,11 +45,10 @@ module.exports = [
                 template: 'src/index.html',
                 publicPath: '/',
             }),
-
+    
             new MiniCssExtractPlugin({
                 filename: 'assets/css/[name].[contenthash].css'
             }),
-
             new CopyPlugin({
                 patterns: [{ from: 'static', to: '' }],
             }),
